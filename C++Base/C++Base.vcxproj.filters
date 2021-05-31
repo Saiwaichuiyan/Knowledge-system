@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Knowledge-system.cpp">
+    <ClCompile Include="C++Base.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

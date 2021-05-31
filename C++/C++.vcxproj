@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{FC637665-58F6-48CA-A3D0-A222AAC50C88}</ProjectGuid>
+    <ProjectGuid>{6C6D3D5E-3DB2-4F1E-A2FC-B4B39B489EDA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Knowledgesystem</RootNamespace>
+    <RootNamespace>C</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,7 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Knowledge-system.cpp" />
+    <ClCompile Include="C++.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
