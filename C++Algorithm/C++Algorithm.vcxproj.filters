@@ -16,6 +16,9 @@
     <Filter Include="Array">
       <UniqueIdentifier>{f16ea2ce-adf5-4246-9110-f8b2e823078a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="List">
+      <UniqueIdentifier>{7119ca4e-cfbf-4fc4-9ab2-af15a2eeeee3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C++Algorithm.cpp">
@@ -24,10 +27,16 @@
     <ClCompile Include="Array.cpp">
       <Filter>Array</Filter>
     </ClCompile>
+    <ClCompile Include="List.cpp">
+      <Filter>List</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.h">
       <Filter>Array</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>List</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

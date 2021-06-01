@@ -1,6 +1,8 @@
 ﻿#include <iostream>
+#include "Demo.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Demo demo;
+    demo.run();
 }
