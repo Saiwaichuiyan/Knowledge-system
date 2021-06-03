@@ -6,11 +6,14 @@
 #include <map>
 #include <unordered_set>
 #include <unordered_map>
-
+#include <algorithm>
 
 using std::string;
 using std::cout;
 using std::endl;
+using std::vector;
+using std::unordered_set;
+
 class Hash
 {
 public:
@@ -216,21 +219,157 @@ public:
         //}
         return true;
     }
-    std::vector<std::vector<int>> threeSum(std::vector<int>& nums) {
-        std::vector<std::vector<int>> result;
-        for (auto i = 0; i < nums.size(); i++) {
-            for (auto j = i + 1; j < nums.size(); j++) {
-                for (auto z = j + 1; z < nums.size(); z++) {
+    
 
+    /**
+        给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，
+        使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。
+        注意： 答案中不可以包含重复的三元组。
+        示例：
+        给定数组 nums = [-1, 0, 1, 2, -1, -4]，
+        满足要求的三元组集合为： [ [-1, 0, 1], [-1, -1, 2] ]
+    */
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        //直接使用三层for循环时间复杂度为O(n^3),所以可以考虑哈希法
+        vector<vector<int>> result;
+        //先排序，使nums有序
+        std::sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] > 0) break;//如果nums[i]大于0的话就无法构成3元组了
+            //去重，如果nums[i] == nums[i+1] 的话，他们组合出来的数据其实是一样的
+            if (i > 0 && nums[i] == nums[i - 1])continue;//i>0的意思是防止第一个就命中
+            std::unordered_set<int> set;
+            for (int j = i +1; j < nums.size(); j++) {
+                //if (j < nums.size() - 1 && nums[j] == nums[j + 1]) continue;
+                if (j > i + 2 && nums[j] == nums[j - 1] && nums[j - 1] == nums[j - 2])continue;
+                int c = 0 - nums[i] - nums[j];
+                if (set.find(c) != set.end()) {
+                    result.push_back(std::vector<int>{nums[i], nums[j], *(set.find(c))});
+                    set.erase(c);
+                }
+                else {
+                    set.insert(nums[j]);
                 }
             }
         }
+
+        return result;
+    }
+    vector<vector<int>> threeSumTwoPoint(vector<int>& nums) {
+        vector<vector<int>> result;
+        std::sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] > 0) break;
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            int left = i + 1;
+            int right = nums.size() - 1;
+
+
+
+            while (left < right) {//左右移动指针
+
+                int sum = nums[left] + nums[right] + nums[i];
+                
+                if ((nums[left] + nums[right] + nums[i]) == 0) {
+                    result.push_back(std::vector<int>{nums[left], nums[right], nums[i]});
+                    while (left < nums.size() - 1 && nums[left] == nums[left + 1]) left++;
+                    while (right > left && nums[right] == nums[right - 1]) right--;
+                    left++;
+                    right--;
+                }
+                else if (sum > 0) {
+                    right--;
+                }
+                else if (sum < 0) {
+                    left++;
+                }
+
+            }
+
+        }
+
+        /*sort(result.begin(), result.end());
+        vector<vector<int>> result1;
+        vector<int> temp{};
+        for (auto itor : result) {
+            if (temp == itor) continue;
+
+            result1.push_back(itor);
+            temp = itor;
+        }*/
+        return result;
     }
 
+    /*
+    给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素
+    a，b，c 和 d ，使得 a + b + c + d 的值与 target 相等？
+    找出所有满足条件且不重复的四元组。
+    注意：答案中不可以包含重复的四元组。
+    */
+    vector<vector<int>> fourSumTwoPoint(vector<int>& nums, int target) {
+        /*思路：
+            这个题和三个数思路是一样的，只是在外面加一层循环，不过
+            与三个数不一样的是这次的target不是0，所以需要去掉判断大于target就退出的判断。
+
+        */
+        vector<vector<int>> result;
+        std::sort(nums.begin(), nums.end());
+        for (int z = 0; z < nums.size(); z++) {
+            if (z > 0 && nums[z] == nums[z - 1]) continue;
+            int temp = target - nums[z];
+
+            for (int i = z + 1; i < nums.size(); i++) {
+
+                if (i > z + 1 && nums[i] == nums[i - 1]) continue;
+                int left = i + 1;
+                int right = nums.size() - 1;
+
+                while (left < right) {//左右移动指针
+
+                    int sum = nums[left] + nums[right] + nums[i];
+
+                    if ((nums[left] + nums[right] + nums[i]) == temp) {
+                        result.push_back(std::vector<int>{nums[z], nums[i], nums[left], nums[right] });
+                        while (left < nums.size() - 1 && nums[left] == nums[left + 1]) left++;
+                        while (right > left && nums[right] == nums[right - 1]) right--;
+                        left++;
+                        right--;
+                    }
+                    else if (sum > temp) {
+                        right--;
+                    }
+                    else if (sum < temp) {
+                        left++;
+                    }
+                }
+            }
+        }
+        return result;
+    }
 };
 
 class HashTest {
 public:
+    void run() {
+        //isAnagramTest();
+        //intersectionTest();
+       // isHappyTest();
+        //twoSumTest();
+        //fourSumCountTest();
+        //canConstructTest();
+        threeSumTest();
+    }
+    void threeSumTest() {
+        Hash hash;
+        std::vector<int> nums = { 0,0,0,0,0,0,0,0,0,0,0 };
+        auto result = hash.threeSumTwoPoint(nums);
+        for (auto itor : result) {
+            for (auto it : itor) {
+                cout << it << " ";
+            }
+            cout << endl;
+        }
+    }
     void canConstructTest() {
         Hash hash;
         cout << hash.canConstruct("aa","acb");
@@ -254,7 +393,7 @@ public:
         cout << endl;
     }
     void isHappyTest() {
-        Hash hash;
+        Hash hash; 
         cout << "arg0: [19]" << endl;
         cout << "expect = 1" << endl;
         cout << "actually " << hash.isHappy(3) << endl;
@@ -292,12 +431,5 @@ public:
         }
         std::cout << "}" << std::endl;
     }
-    void run() {
-        //isAnagramTest();
-        //intersectionTest();
-       // isHappyTest();
-        //twoSumTest();
-        //fourSumCountTest();
-        canConstructTest();
-    }
+
 };
