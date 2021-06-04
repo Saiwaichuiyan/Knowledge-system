@@ -13,9 +13,15 @@ using std::cout;
 using std::endl;
 using std::vector;
 using std::unordered_set;
+/*
+    哈希表理论：
+    哈希：将元素通过一个函数转化为一个整数，该整数可唯一的代表这个元素
+    作用：快速的判断一个元素是否出现在集合里
 
+*/
 class Hash
 {
+    
 public:
     /**
         给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。

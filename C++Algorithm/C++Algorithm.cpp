@@ -2,7 +2,7 @@
 #include "Array.h"
 #include "List.h"
 #include "Hash.h"
-
+#include "MString.h"
 
 void TestList() {
     ListTest test;
@@ -12,9 +12,15 @@ void TestHash() {
     HashTest test;
     test.run();
 }
+
+void TestMyString(){
+    MStringTest test;
+    test.run();
+}
 void TestAll() {
     //TestList();
-    TestHash();
+    //TestHash();
+    TestMyString();
 }
 int main()
 {

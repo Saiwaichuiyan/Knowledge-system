@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="头文件">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
@@ -22,6 +18,13 @@
     <Filter Include="Hash">
       <UniqueIdentifier>{0f2f5f34-f150-43d7-82ee-c853c3b4bda2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="string">
+      <UniqueIdentifier>{622a176f-1b3a-4444-a322-11f4f0e6f840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C++Algorithm.cpp">
@@ -36,6 +39,9 @@
     <ClCompile Include="Hash.cpp">
       <Filter>Hash</Filter>
     </ClCompile>
+    <ClCompile Include="MString.cpp">
+      <Filter>string</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.h">
@@ -46,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="Hash.h">
       <Filter>Hash</Filter>
+    </ClInclude>
+    <ClInclude Include="MString.h">
+      <Filter>string</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
