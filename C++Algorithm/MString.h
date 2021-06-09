@@ -127,6 +127,17 @@ public:
         }
         return -1;
     }
+    bool get() {
+        std::string str = "aacaaaaaaaa";
+        //˫ָ�뷨
+        int first = 0, second = 0;
+        std::string temp{str[0]};
+        if (str.size() <= 1) return false;
+        for ( ; ; ) {
+            
+           
+        }
+    }
 };
 
 class MStringTest {
@@ -134,8 +145,9 @@ public:
     void strStrTest() {
         std::string str = "hello",str1 = "ll";
         MString s;
-        int result = s.strStr(str, str1);
-        std::cout << result << std::endl;
+       // int result = s.strStr(str, str1);
+       // std::cout << result << std::endl;
+        std::cout << s.get()<<std::endl;
     }
     void recerseWordsTest() {
         std::string str = "     hello world  ";
@@ -162,7 +174,7 @@ public:
     }
     void run() {
         strStrTest();
-        recerseWordsTest();
+        //recerseWordsTest();
         //replaceSpaceTest();
         //recerserStringTest();
     }
