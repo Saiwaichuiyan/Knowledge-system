@@ -1,8 +1,10 @@
 ﻿#include <iostream>
 #include "Demo.h"
-
+#include "StringTest.h"
 int main()
 {
-    Demo demo;
-    demo.run();
+    StringTest test;
+    test.test();
+   // Demo demo;
+   // demo.run();
 }

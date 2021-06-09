@@ -156,9 +156,11 @@
   <ItemGroup>
     <ClCompile Include="C++Base.cpp" />
     <ClCompile Include="Demo.cpp" />
+    <ClCompile Include="StringTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Demo.h" />
+    <ClInclude Include="StringTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
